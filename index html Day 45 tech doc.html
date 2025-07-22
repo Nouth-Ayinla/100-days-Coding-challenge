@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technical Documentation</title>
+  <style>
+    * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+#navbar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: #f4f4f4;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+#navbar header {
+  font-size: 1.4em;
+  margin-bottom: 20px;
+}
+
+.nav-link {
+  display: block;
+  margin: 10px 0;
+  color: #000;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+#main-doc {
+  margin-left: 270px;
+  padding: 20px;
+}
+
+.main-section {
+  margin-bottom: 40px;
+}
+
+.main-section header {
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
+
+code {
+  display: block;
+  background-color: #eee;
+  padding: 10px;
+  margin: 10px 0;
+  border-left: 4px solid #999;
+}
+
+ul {
+  margin: 10px 0 20px 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Media Query for small devices */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  #navbar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #main-doc {
+    margin-left: 0;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <header>Technical Documentation</header>
+    <a class="nav-link" href="#Introduction">Introduction</a>
+    <a class="nav-link" href="#HTML_Basics">HTML Basics</a>
+    <a class="nav-link" href="#CSS_Syntax">CSS Syntax</a>
+    <a class="nav-link" href="#JavaScript_Basics">JavaScript Basics</a>
+    <a class="nav-link" href="#Best_Practices">Best Practices</a>
+  </nav>
+
+  <main id="main-doc">
+    <section class="main-section" id="Introduction">
+      <header>Introduction</header>
+      <p>This is a brief introduction to web technologies.</p>
+      <p>We will explore HTML, CSS, JavaScript, and development tips.</p>
+      <p>Understanding these technologies is essential for frontend development.</p>
+      <p>This documentation covers basic to intermediate concepts.</p>
+      <p>You should already know how to use a code editor.</p>
+      <code>console.log("Welcome to Web Dev");</code>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="HTML_Basics">
+      <header>HTML Basics</header>
+      <p>HTML stands for HyperText Markup Language.</p>
+      <p>It provides the structure of web pages.</p>
+      <p>Tags are used to define elements like headings and paragraphs.</p>
+      <p>HTML files have a `.html` extension.</p>
+      <p>Most elements have opening and closing tags.</p>
+      <code>&lt;p&gt;This is a paragraph&lt;/p&gt;</code>
+      <ul>
+        <li>&lt;h1&gt; to &lt;h6&gt; for headings</li>
+        <li>&lt;p&gt; for paragraphs</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="CSS_Syntax">
+      <header>CSS Syntax</header>
+      <p>CSS stands for Cascading Style Sheets.</p>
+      <p>It defines how HTML elements are displayed.</p>
+      <p>Rules consist of selectors and declaration blocks.</p>
+      <p>CSS can be written inline, internally, or externally.</p>
+      <p>Classes and IDs are used to target elements.</p>
+      <code>body { background-color: #fff; }</code>
+      <ul>
+        <li>Selectors</li>
+        <li>Properties</li>
+        <li>Values</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="JavaScript_Basics">
+      <header>JavaScript Basics</header>
+      <p>JavaScript adds interactivity to web pages.</p>
+      <p>It is a scripting language that runs in the browser.</p>
+      <p>Variables, functions, and loops are fundamental concepts.</p>
+      <p>Use the `script` tag to include JavaScript.</p>
+      <p>JS can also be included from external files.</p>
+      <code>let x = 5;</code>
+      <ul>
+        <li>Variables</li>
+        <li>Functions</li>
+        <li>Events</li>
+      </ul>
+    </section>
+
+    <section class="main-section" id="Best_Practices">
+      <header>Best Practices</header>
+      <p>Use semantic HTML whenever possible.</p>
+      <p>Write clean and readable code.</p>
+      <p>Keep CSS and JavaScript in separate files.</p>
+      <p>Test your site in different browsers.</p>
+      <p>Optimize performance and accessibility.</p>
+      <code>function greet(name) { return "Hello " + name; }</code>
+      <ul>
+        <li>Use comments</li>
+        <li>Keep it simple</li>
+        <li>Follow standards</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

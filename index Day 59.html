@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covenant Hour Attendance</title>
+    <link rel="stylesheet" href="styles59.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Covenant Hour Attendance</h1>
+        
+        <div class="attendance-form">
+            <label for="staffNumber">Staff Number:</label>
+            <input type="text" id="staffNumber" placeholder="Enter staff number">
+            <button id="markAttendance">Mark Present</button>
+        </div>
+        
+        <div class="attendance-list">
+            <h2>Today's Attendance (<span id="currentDate"></span>)</h2>
+            <div class="list-header">
+                <span>Staff Number</span>
+                <span>Time</span>
+            </div>
+            <div id="attendanceRecords"></div>
+            <div class="summary">
+                <p>Total Present: <span id="totalPresent">0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script>// Display current date
+const now = new Date();
+document.getElementById('currentDate').textContent = now.toLocaleDateString();
+
+// Attendance records array
+let attendanceRecords = [];
+
+// Function to mark attendance
+function markAttendance() {
+    const staffNumberInput = document.getElementById('staffNumber');
+    const staffNumber = staffNumberInput.value.trim();
+    
+    if (!staffNumber) {
+        alert('Please enter a staff number');
+        return;
+    }
+    
+    // Check if staff is already marked present
+    if (attendanceRecords.some(record => record.staffNumber === staffNumber)) {
+        alert('This staff member is already marked present');
+        staffNumberInput.value = '';
+        return;
+    }
+    
+    // Get current time
+    const currentTime = now.toLocaleTimeString();
+    
+    // Add to records
+    attendanceRecords.push({
+        staffNumber: staffNumber,
+        time: currentTime
+    });
+    
+    // Update the display
+    updateAttendanceList();
+    
+    // Clear the input
+    staffNumberInput.value = '';
+    
+    // Focus back on the input for next entry
+    staffNumberInput.focus();
+}
+
+// Function to update the attendance list display
+function updateAttendanceList() {
+    const recordsContainer = document.getElementById('attendanceRecords');
+    const totalPresentSpan = document.getElementById('totalPresent');
+    
+    // Clear current records
+    recordsContainer.innerHTML = '';
+    
+    // Add each record to the display
+    attendanceRecords.forEach(record => {
+        const recordElement = document.createElement('div');
+        recordElement.innerHTML = `
+            <span>${record.staffNumber}</span>
+            <span>${record.time}</span>
+        `;
+        recordsContainer.appendChild(recordElement);
+    });
+    
+    // Update total count
+    totalPresentSpan.textContent = attendanceRecords.length;
+}
+
+// Event listener for the button
+document.getElementById('markAttendance').addEventListener('click', markAttendance);
+
+// Also allow marking attendance with Enter key
+document.getElementById('staffNumber').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        markAttendance();
+    }
+});</script>
+</body>
+</html>

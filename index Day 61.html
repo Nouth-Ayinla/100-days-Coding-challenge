@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake Game</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f0f0f0;
+      font-family: Arial;
+    }
+    #game-container {
+      text-align: center;
+    }
+    #game-canvas {
+      border: 2px solid #333;
+      background: #000;
+    }
+    #score {
+      font-size: 24px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <h1>Snake Game</h1>
+    <div id="score">Score: 0</div>
+    <canvas id="game-canvas" width="400" height="400"></canvas>
+  </div>
+  <script src="node.js"></script>
+</body>
+</html>

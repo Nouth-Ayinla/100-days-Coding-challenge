@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boxed Digital Clock</title>
+  <style>/* styles.css */
+body {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  transition: background 0.3s, color 0.3s;
+  
+}
+
+/* Light Theme (Default) */
+body.light {
+  background: #4f3956;
+  color: #333;
+}
+
+/* Dark Theme */
+body.dark {
+  background: #222;
+  color: #4f3956;
+}
+
+.clock-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.clock-box {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background: rgb(110, 64, 138);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.dark .clock-box {
+  background: #333;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.clock-face {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin: 25px 0;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background: #90599d;
+  color: white;
+  transition: background 0.3s;
+  margin-top: 20px;
+}
+
+button:hover {
+  background: #0056b3;
+}</style>
+</head>
+<body>
+  <div class="clock-container">
+    <div class="clock-box">
+      <h1>Digital Clock</h1>
+      <div class="clock-face">
+        <span id="hours">00</span>:
+        <span id="minutes">00</span>:
+        <span id="seconds">00</span>
+      </div>
+      <button id="themeToggle">Dark Mode</button>
+    </div>
+  </div>
+  <script>// script.js
+const hoursElement = document.getElementById('hours');
+const minutesElement = document.getElementById('minutes');
+const secondsElement = document.getElementById('seconds');
+const themeToggle = document.getElementById('themeToggle');
+const body = document.body;
+
+function updateClock() {
+  const now = new Date();
+  hoursElement.textContent = String(now.getHours()).padStart(2, '0');
+  minutesElement.textContent = String(now.getMinutes()).padStart(2, '0');
+  secondsElement.textContent = String(now.getSeconds()).padStart(2, '0');
+}
+
+themeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  const isDark = body.classList.contains('dark');
+  themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+  
+  // Optional: Save preference to localStorage
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Check for saved theme preference
+if (localStorage.getItem('theme') === 'dark') {
+  body.classList.add('dark');
+  themeToggle.textContent = 'Light Mode';
+}
+
+updateClock();
+setInterval(updateClock, 1000);</script>
+</body>
+</html>

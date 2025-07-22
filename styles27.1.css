@@ -1,0 +1,92 @@
+/* Base styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Row styling */
+tr[class="read"] {
+    background-image: linear-gradient(to right, #e8f5e9, #c8e6c9);
+}
+
+tr[class="to-read"] {
+    background-image: linear-gradient(to right, #e3f2fd, #bbdefb);
+}
+
+tr[class="in-progress"] {
+    background-image: linear-gradient(to right, #fff8e1, #ffecb3);
+}
+
+/* Status spans */
+span {
+    display: inline-block;
+}
+
+span[class="status"] {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+tr[class="read"] span[class="status"] {
+    border: 2px solid #2e7d32;
+    background-image: linear-gradient(to bottom, #81c784, #4caf50);
+}
+
+tr[class="to-read"] span[class="status"] {
+    border: 2px solid #1565c0;
+    background-image: linear-gradient(to bottom, #64b5f6, #1976d2);
+}
+
+tr[class="in-progress"] span[class="status"] {
+    border: 2px solid #ff8f00;
+    background-image: linear-gradient(to bottom, #ffd54f, #ffa000);
+}
+
+/* Rating stars */
+span[class^="rate"], 
+span[class="status"] {
+    height: 20px;
+    width: 80px;
+    padding: 2px;
+}
+
+span[class^="rate"] > span {
+    border: 1px solid #555;
+    border-radius: 50%;
+    margin: 0 2px;
+    height: 16px;
+    width: 16px;
+    background-color: #eee;
+}
+
+/* Star ratings */
+span[class*="one"] > span:first-child {
+    background-image: linear-gradient(to bottom, #ffd700, #ffab00);
+}
+
+span[class*="two"] > span:nth-child(-n+2) {
+    background-image: linear-gradient(to bottom, #ffd700, #ffab00);
+}
+
+span[class*="three"] > span {
+    background-image: linear-gradient(to bottom, #ffd700, #ffab00);
+}

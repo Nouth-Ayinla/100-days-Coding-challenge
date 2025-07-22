@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Qualification Checker</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e6f2ff; 
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #b3d1ff; /* Light blue border */
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: #f0f7ff; /* Very pale blue input background */
+        }
+
+        button {
+            background-color: #66a3ff; /* Medium blue button */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #4d94ff; /* Slightly darker blue on hover */
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+            background-color: #f0f7ff; /* Pale blue background */
+            border: 1px solid #b3d1ff; /* Light blue border */
+            color: #2c3e50;
+        }
+
+        .requirements {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #f0f7ff; /* Pale blue background */
+            border-radius: 5px;
+            border: 1px solid #b3d1ff; /* Light blue border */
+        }
+
+        .requirements h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .requirements ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .requirements li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Qualification Checker</h1>
+        
+        <div class="form-group">
+            <label for="income">Annual Income ($):</label>
+            <input type="number" id="income" placeholder="Enter your annual income">
+        </div>
+        
+        <div class="form-group">
+            <label for="credit">Credit Score:</label>
+            <input type="number" id="credit" placeholder="Enter your credit score">
+        </div>
+        
+        <button onclick="checkQualification()">Check Qualification</button>
+        
+        <div id="result" class="result"></div>
+        
+        <div class="requirements">
+            <h3>Loan Requirements</h3>
+            <ul>
+                <li><strong>Duplex Loan:</strong> $60,000+ income and 700+ credit score</li>
+                <li><strong>Condo Loan:</strong> $45,000+ income and 680+ credit score</li>
+                <li><strong>Car Loan:</strong> $30,000+ income and 650+ credit score</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const minIncomeForDuplex = 60000;
+        const minCreditScoreForDuplex = 700;
+        const minIncomeForCondo = 45000;
+        const minCreditScoreForCondo = 680;
+        const minIncomeForCar = 30000;
+        const minCreditScoreForCar = 650;
+
+        function getLoanMessage(annualIncome, creditScore) {
+            if(creditScore >= minCreditScoreForDuplex && annualIncome >= minIncomeForDuplex) {
+                return "You qualify for a duplex, condo, and car loan.";
+            } else if (annualIncome >= minIncomeForCondo && creditScore >= minCreditScoreForCondo) {
+                return "You qualify for a condo and car loan.";
+            } else if (annualIncome >= minIncomeForCar && creditScore >= minCreditScoreForCar) {
+                return "You qualify for a car loan.";
+            } else {
+                return "You don't qualify for any loans at this time.";
+            }
+        }
+
+        function checkQualification() {
+            const incomeInput = document.getElementById('income');
+            const creditInput = document.getElementById('credit');
+            const resultDiv = document.getElementById('result');
+            
+            // Convert inputs to numbers
+            const income = parseFloat(incomeInput.value);
+            const credit = parseFloat(creditInput.value);
+            
+            // Validate inputs
+            if (isNaN(income) || income <= 0) {
+                alert("Please enter a valid annual income");
+                incomeInput.focus();
+                return;
+            }
+            
+            if (isNaN(credit) || credit <= 0 || credit > 850) {
+                alert("Please enter a valid credit score (0-850)");
+                creditInput.focus();
+                return;
+            }
+            
+            // Get qualification message
+            const message = getLoanMessage(income, credit);
+            resultDiv.textContent = message;
+            resultDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>

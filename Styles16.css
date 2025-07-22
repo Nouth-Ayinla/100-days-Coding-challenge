@@ -1,0 +1,47 @@
+body{
+  font-family:'Segoe UI', sans-serif;
+  background-color:#f4f4f4;
+  padding:40px;
+  display:flex;
+  justify-content:center;
+
+}
+
+h1{
+  font-style:italic;
+  color:black;
+  text-align: ;
+}
+
+
+#email{
+  padding:50px;
+  margin-top:50px;
+  width:500px;
+  border:2px solid #333;
+  box-sizing:border-box;background-color:#fff;
+  box-shadow:0 0 15px rgba(0,0,0,0.1);
+  position:relative;
+}
+  #confidential {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: 2px solid red;
+      transform: rotate(-10deg);
+    }
+
+    #top-secret {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-left: 10px;
+      border: 2px solid blue;
+      transform: rotate(10deg);
+    }
+     #top-secret {
+      transform: rotate(10deg);
+      }
+      .blurred{
+        filter:blur(3px);
+        color:gray;
+      }
