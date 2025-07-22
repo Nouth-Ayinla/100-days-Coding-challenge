@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function switchModeAutomatically() {
         if (currentMode === 'pomodoro') {
             // Check how many pomodoros completed to decide break type
-            // For simplicity, we'll alternate between short and long breaks
+        
             const lastBreakWasLong = localStorage.getItem('lastBreakWasLong') === 'true';
             
             if (lastBreakWasLong) {
